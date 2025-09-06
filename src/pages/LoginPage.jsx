@@ -1,14 +1,29 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userLogin } from "../../api/userApi.js";
+import { useDispatch } from "react-redux";
+import { loadingUser } from "../../features/userSlice.js";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // 登录逻辑后跳转 todo 页面
+    try {
+      await userLogin({ email, password });
+
+      dispatch(loadingUser({ email, password }));
+    } catch (error) {
+      if (error.message === "dismatch password or email") {
+        window.alert("邮箱或密码错误，请重试！");
+      } else if (error.message === "token expired") {
+        window.alert("登录已过期，请重新登录！");
+      }
+      return;
+    }
     navigate("/todos");
   };
 

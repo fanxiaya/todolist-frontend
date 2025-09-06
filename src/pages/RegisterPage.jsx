@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import userRegister from "../../api/userApi.js";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -7,9 +8,15 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // 注册逻辑，成功/失败弹窗
+    try {
+      await userRegister({ name, email, password });
+    } catch (error) {
+      console.error("in RegisterPage:", error);
+      window.alert("注册失败，请重试！");
+      return;
+    }
     window.alert("注册成功！");
     navigate("/");
   };
@@ -50,7 +57,11 @@ const RegisterPage = () => {
           style={{ width: "100%", marginBottom: 16, padding: 8 }}
           required
         />
-        <button type="submit" style={{ width: "100%", padding: 10 }}>
+        <button
+          type="submit"
+          style={{ width: "100%", padding: 10 }}
+          onClick={handleRegister}
+        >
           注册
         </button>
       </form>
