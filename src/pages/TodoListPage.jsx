@@ -16,10 +16,10 @@ const TodoListPage = () => {
 
   return (
     <div className="todo-container">
-      <h2 className="todo-title">我的待办事项</h2>
+      <h2 className="todo-title">我的TodoList</h2>
       <ul className="todo-list">
         {todos.length === 0 ? (
-          <li>暂无待办事项</li>
+          <li>暂无TodoList</li>
         ) : (
           <TodoCard todos={todos} setTodos={setTodos} />
         )}

@@ -1,39 +1,72 @@
 body {
-  background: #f6f8fa;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
   font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
     Arial, sans-serif;
 }
 
 .todo-container {
-  max-width: 600px;
-  margin: 60px auto;
+  width: 60%;
+  max-width: 900px;
+  margin: 90px auto;
   padding: 32px;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .todo-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 32px;
   color: #2d3748;
   text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #e2e8f0;
 }
 
 .todo-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .todo-card {
   margin-bottom: 24px;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 20px;
-  background: #fafbfc;
-  transition: box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  padding: 24px;
+  background: #f7fafc;
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInCard 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .todo-card:hover {
@@ -42,81 +75,101 @@ body {
 
 .todo-card-title {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: #3182ce;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
 }
 
 .todo-card-desc {
   color: #4a5568;
   margin: 8px 0;
+  font-size: 1rem;
 }
 
 .todo-card-status {
   margin: 8px 0;
   color: #718096;
+  font-weight: 500;
 }
 
 .todo-card-date {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: #a0aec0;
+  margin-bottom: 2px;
 }
 
 .todo-card-actions {
   margin-top: 12px;
+  display: flex;
+  gap: 8px;
 }
 
 .todo-btn {
   padding: 6px 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-right: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #e2e8f0;
+  font-weight: 500;
 }
 
 .todo-btn-edit {
   background: #bee3f8;
   color: #2b6cb0;
+  border: 1px solid #90cdf4;
 }
 
 .todo-btn-edit:hover {
   background: #90cdf4;
+  color: #fff;
 }
 
 .todo-btn-delete {
   background: #fed7d7;
   color: #c53030;
+  border: 1px solid #feb2b2;
 }
 
 .todo-btn-delete:hover {
   background: #feb2b2;
+  color: #fff;
 }
 
 .todo-btn-complete {
   background: #c6f6d5;
   color: #2f855a;
+  border: 1px solid #68d391;
 }
 
 .todo-btn-complete:hover {
   background: #68d391;
+  color: #fff;
 }
 
 .form-container {
-  max-width: 400px;
-  margin: 80px auto;
-  padding: 32px;
+  max-width: 900px;
+  margin: 90px auto 48px auto;
+  padding: 48px 40px;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px #eee;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px #e2e8f0;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .form-title {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
   margin-bottom: 24px;
   color: #2d3748;
   text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #e2e8f0;
 }
 
 .form-input {
@@ -124,10 +177,11 @@ body {
   margin-bottom: 16px;
   padding: 8px;
   border: 1px solid #e2e8f0;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
   background: #f7fafc;
   resize: vertical;
+  box-shadow: 0 2px 8px #e2e8f0;
 }
 
 textarea.form-input {
@@ -142,15 +196,18 @@ textarea.form-input {
   background: #3182ce;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
   margin-bottom: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #e2e8f0;
+  font-weight: 500;
 }
 
 .form-btn:hover {
   background: #2563eb;
+  color: #fff;
 }
 
 .form-link-btn {
@@ -159,14 +216,17 @@ textarea.form-input {
   background: #e2e8f0;
   color: #2d3748;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #e2e8f0;
+  font-weight: 500;
 }
 
 .form-link-btn:hover {
   background: #cbd5e1;
+  color: #3182ce;
 }
 .todolist-title {
   text-align: center;

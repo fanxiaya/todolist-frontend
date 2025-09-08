@@ -14,9 +14,9 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route element={<NavBar />}>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
             <Route path="/todos" element={<TodoListPage />} />
             <Route path="/newtodo" element={<NewTodoPage />} />
             <Route path="/edit" element={<EditTodoPage />} />

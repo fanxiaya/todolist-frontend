@@ -17,8 +17,8 @@ const NewTodoPage = () => {
     try {
       await createTodo({ title, description });
     } catch (error) {
-      console.error("创建待办事项失败:", error);
-      window.alert("创建待办事项失败，请重试！");
+      console.error("创建Todo失败:", error);
+      window.alert("创建Todo失败，请重试！");
       navigate("/todos");
       return;
     }
@@ -31,7 +31,7 @@ const NewTodoPage = () => {
 
   return (
     <div className="form-container">
-      <h2 className="form-title">新建待办事项</h2>
+      <h2 className="form-title">➕新建Todo</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
