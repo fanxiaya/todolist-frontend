@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import userRegister from "../../api/userApi.js";
+import "../../assets/main.css";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -22,23 +23,15 @@ const RegisterPage = () => {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: 400,
-        margin: "80px auto",
-        padding: 32,
-        boxShadow: "0 2px 8px #eee",
-        borderRadius: 8,
-      }}
-    >
-      <h2>注册</h2>
+    <div className="form-container">
+      <h1 className="todolist-title">📝 注册待办清单</h1>
       <form onSubmit={handleRegister}>
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          style={{ width: "100%", marginBottom: 16, padding: 8 }}
+          className="form-input"
           required
         />
         <input
@@ -46,7 +39,7 @@ const RegisterPage = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{ width: "100%", marginBottom: 16, padding: 8 }}
+          className="form-input"
           required
         />
         <input
@@ -54,14 +47,10 @@ const RegisterPage = () => {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{ width: "100%", marginBottom: 16, padding: 8 }}
+          className="form-input"
           required
         />
-        <button
-          type="submit"
-          style={{ width: "100%", padding: 10 }}
-          onClick={handleRegister}
-        >
+        <button type="submit" className="form-btn">
           注册
         </button>
       </form>

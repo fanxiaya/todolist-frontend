@@ -1,13 +1,28 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { getTodos } from "../../api/todoApi.js";
+import TodoCard from "../../components/todoCard.jsx";
+import "../../assets/main.css";
 
 const TodoListPage = () => {
-  // 这里只是界面占位，后续可接入 API
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const todos = await getTodos();
+      setTodos(todos);
+    };
+    fetchData();
+  }, []);
+
   return (
-    <div style={{ maxWidth: 600, margin: "60px auto", padding: 32 }}>
-      <h2>我的待办事项</h2>
-      <ul>
-        <li>示例待办事项 1</li>
-        <li>示例待办事项 2</li>
+    <div className="todo-container">
+      <h2 className="todo-title">我的待办事项</h2>
+      <ul className="todo-list">
+        {todos.length === 0 ? (
+          <li>暂无待办事项</li>
+        ) : (
+          <TodoCard todos={todos} setTodos={setTodos} />
+        )}
       </ul>
     </div>
   );

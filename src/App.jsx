@@ -4,15 +4,25 @@ import RegisterPage from "./pages/RegisterPage";
 import TodoListPage from "./pages/TodoListPage";
 import { Provider } from "react-redux";
 import store from "../app/store.js";
-
+import NavBar from "../components/NavBar.jsx";
+import NewTodoPage from "./pages/NewTodo.jsx";
+import EditTodoPage from "./pages/EditPage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import UndefinedPage from "./pages/UndefinedPage.jsx";
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/todos" element={<TodoListPage />} />
+          <Route element={<NavBar />}>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/todos" element={<TodoListPage />} />
+            <Route path="/newtodo" element={<NewTodoPage />} />
+            <Route path="/edit" element={<EditTodoPage />} />
+            <Route path="/about" element={<AboutPage />} />
+          </Route>
+          <Route path="*" element={<UndefinedPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
