@@ -38,7 +38,7 @@ const LoginPage = () => {
 
   return (
     <div className="form-container">
-      <h1 className="todolist-title">📝 登录TodoList Site</h1>
+      <h1 className="todolist-title">📝 登录Todo List Site</h1>
       <form onSubmit={handleLogin}>
         <input
           type="email"
@@ -48,6 +48,7 @@ const LoginPage = () => {
           className="form-input"
           required
         />
+
         <input
           type="password"
           placeholder="Password"

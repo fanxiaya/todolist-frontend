@@ -24,7 +24,7 @@ const RegisterPage = () => {
 
   return (
     <div className="form-container">
-      <h1 className="todolist-title">📝 注册TodoList Site</h1>
+      <h1 className="todolist-title">📝 注册Todo List Site</h1>
       <form onSubmit={handleRegister}>
         <input
           type="text"
